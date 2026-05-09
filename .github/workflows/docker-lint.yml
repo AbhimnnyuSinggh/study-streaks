@@ -3,8 +3,7 @@ name: Docker Lint
 on:
     workflow_call:
     
-    push:
-        branches: [main]
+    
 
 jobs:
     Docker_Image_scan:

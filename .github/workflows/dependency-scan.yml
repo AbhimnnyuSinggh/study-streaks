@@ -3,8 +3,7 @@ name: Dependency Scan
 on:
     workflow_call:
     
-    push:
-        branches: [main]
+ 
 
 jobs:
     Dependency_Scan:

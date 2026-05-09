@@ -2,8 +2,7 @@ name: Code-Quality
 
 on:
   workflow_call:
-  push:
-    branches: [main]
+  
 #Check Code_Quality
 jobs:
   code_quality:
