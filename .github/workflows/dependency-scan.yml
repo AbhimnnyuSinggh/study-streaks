@@ -1,0 +1,27 @@
+name: Dependency Scan
+
+on:
+    workflow_call:
+    
+    push:
+        branches: [main]
+
+jobs:
+    Dependency_Scan:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@4
+              with:
+                node-version: 20
+
+            - name: Install Dependency
+              run: npm install --legacy-peer-deps
+
+            - name: Run npm audit
+              run: npm audit --audit-level=high
+              
