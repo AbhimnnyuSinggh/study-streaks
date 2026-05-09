@@ -1,20 +1,17 @@
 name: Docker Lint
 
 on:
-    workflow_call:
-    
-    
+  workflow_call:
 
 jobs:
-    Docker_Image_scan:
-        runs-on: ubuntu-latest
+  docker_lint:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            - name: Scan Docker Image
-              uses: hadolint/hadolint-action@v3.1.0
-              with:
-                dockerfile: Dockerfile
-
+      - name: Scan Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile

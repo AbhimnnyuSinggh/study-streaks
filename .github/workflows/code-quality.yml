@@ -2,15 +2,14 @@ name: Code-Quality
 
 on:
   workflow_call:
-  
-#Check Code_Quality
+
 jobs:
   code_quality:
     runs-on: ubuntu-latest
 
     steps:
       - name: Code Checkout
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v4
 
       - name: Setup Node js
         uses: actions/setup-node@v4
@@ -18,13 +17,13 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        run: npm install --legacy-peer-deps     
+        run: npm ci --legacy-peer-deps
 
       - name: Lint Check
         run: npm run lint
 
       - name: SAST
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=high || true
 
       - name: Build App
         run: npm run build

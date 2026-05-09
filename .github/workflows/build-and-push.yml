@@ -1,30 +1,27 @@
 name: Build and Push Docker Image
 
 on:
-    workflow_call:
-
+  workflow_call:
 
 jobs:
-    Build_and_push:
-        runs-on: ubuntu-latest
+  build_and_push:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            - name: Login To DockerHub
-              uses: docker/login-action@v3
-              with:
-                username: ${{ vars.DOCKERHUB_USER }}
-                password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Login To DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-            - name: Build Dockerhub Image
-              run:
-                docker build -t abhimnyusingh/study-streaks:latest .
+      - name: Build Docker Image
+        run: docker build -t ${{ vars.DOCKERHUB_USER }}/study-streaks:latest .
 
-            - name: Push to DockerHub
-              run: 
-                docker push ${{ vars.DOCKERHUB_USER }}/study-streaks:latest
+      - name: Push Docker Image
+        run: docker push ${{ vars.DOCKERHUB_USER }}/study-streaks:latest
  
 
     
