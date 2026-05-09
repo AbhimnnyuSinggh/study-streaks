@@ -36,5 +36,6 @@ jobs:
   deploy:
     needs: [trivy-scan]
     uses: ./.github/workflows/deploy.yml
+    secrets: inherit
 
         
