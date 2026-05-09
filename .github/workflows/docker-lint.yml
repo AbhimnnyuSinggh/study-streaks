@@ -1,0 +1,21 @@
+name: Docker Lint
+
+on:
+    workflow_call:
+    
+    push:
+        branches: [main]
+
+jobs:
+    Docker_Image_scan:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Scan Docker Image
+              uses: hadolint/hadolint-action@v3.1.0
+              with:
+                dockerfile: Dockerfile
+
