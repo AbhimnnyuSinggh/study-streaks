@@ -31,4 +31,10 @@ jobs:
     needs:
       - build-and-push
     uses: ./.github/workflows/trivy-scan.yml
+
+
+  deploy:
+    needs: [trivy-scan]
+    uses: ./.github/workflows/deploy.yml
+
         
