@@ -44,7 +44,7 @@ jobs:
           script: |
             echo ${{ secrets.DOCKERHUB_PASSWORD }} | sudo docker login -u ${{ vars.DOCKERHUB_USER }} --password-stdin
             cd ~/devops
-            sudo docker-compose down
-            sudo docker-compose pull
+            sudo docker compose down
+            sudo docker compose pull
             sudo docker image prune -af
-            sudo docker-compose up -d
+            sudo docker compose up -d
